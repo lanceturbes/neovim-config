@@ -66,6 +66,9 @@ require("packer").startup(function(use)
 	-- allow git commands from vim
 	use("tpope/vim-fugitive")
 
+	-- allow easy commenting/uncommenting
+	use("tpope/vim-commentary")
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end
