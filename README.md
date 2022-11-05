@@ -39,3 +39,11 @@ This configuration is primarily lua-based and uses Packer to manage plugins. Has
 ## Credits
 
 Special thanks to [ThePrimagen](https://github.com/ThePrimeagen) for open-sourcing [his config](https://github.com/ThePrimeagen/.dotfiles/tree/master/nvim/.config/nvim) -- I used it as a reference while building this one. Also, [his YouTube channel](https://www.youtube.com/c/ThePrimeagen) has a lot of information about working with Vim and programming in-general, and his VimBeGood game is fun, too.
+
+## Disclaimer
+
+I am sharing this configuration as-is and offer no support if something goes wrong. 
+
+If you want an all-in-one configuration for Neovim, [LunarVim](https://www.lunarvim.org/) and [Astrovim](https://github.com/AstroNvim/AstroNvim) are great choices.
+
+All plugins I am using have been linked above so you may easily check them out yourself and send bug reports to the original authors in order to help them improve.
