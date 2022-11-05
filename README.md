@@ -4,6 +4,43 @@ This is my personal neovim configuration as a web developer.
 
 This configuration is primarily lua-based and uses Packer to manage plugins. Has support for TypeScript/React and Lua.
 
+### Disclaimer
+
+I am sharing this configuration as-is and offer no support if something goes wrong. 
+
+If you want an all-in-one configuration for Neovim, [LunarVim](https://www.lunarvim.org/) and [Astrovim](https://github.com/AstroNvim/AstroNvim) are great choices.
+
+All plugins I am using have been linked above so you may easily check them out yourself and send bug reports to the original authors in order to help them improve.
+
+### Table of Contents
+
+- [Getting Started](#Getting Started)
+- [Plugin/Extension List](#Plugin list)
+
+## Getting Started
+
+All of the following commands assume you are on a Linux machine and already have a copy of **Neovim 0.8+**. I recommend using [Bob](https://github.com/MordechaiHadad/bob) to manage Neovim versions on your system.
+
+First, back up your current neovim configuration:
+
+```bash
+cp -r ~/.config/nvim ~/.config/nvim-backup
+```
+
+Next, clone this repository to your machine and move its contents to your neovim configuration directory:
+
+```bash
+cd ~/Downloads
+git clone https://github.com/lanceturbes/neovim-config.git
+mv ./neovim-config ~/.config/nvim
+```
+
+Finally, launch Neovim and run `PackerSync` to install all the included extensions.
+
+```bash
+nvim +PackerSync
+```
+
 ## Plugin list
 
 ### Core
@@ -39,11 +76,3 @@ This configuration is primarily lua-based and uses Packer to manage plugins. Has
 ## Credits
 
 Special thanks to [ThePrimagen](https://github.com/ThePrimeagen) for open-sourcing [his config](https://github.com/ThePrimeagen/.dotfiles/tree/master/nvim/.config/nvim) -- I used it as a reference while building this one. Also, [his YouTube channel](https://www.youtube.com/c/ThePrimeagen) has a lot of information about working with Vim and programming in-general, and his VimBeGood game is fun, too.
-
-## Disclaimer
-
-I am sharing this configuration as-is and offer no support if something goes wrong. 
-
-If you want an all-in-one configuration for Neovim, [LunarVim](https://www.lunarvim.org/) and [Astrovim](https://github.com/AstroNvim/AstroNvim) are great choices.
-
-All plugins I am using have been linked above so you may easily check them out yourself and send bug reports to the original authors in order to help them improve.
