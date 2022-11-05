@@ -14,8 +14,14 @@ All plugins I am using have been linked above so you may easily check them out y
 
 ### Table of Contents
 
-- [Getting Started](#Getting Started)
-- [Plugin/Extension List](#Plugin list)
+- [Quick Start](#getting-started)
+- [Plugins/Extensions](#plugin-list)
+  - [Core](#core)
+  - [Language Support/Helpers](#language-support/helpers)
+  - [Workspace Tools](#workspace-tools)
+  - [Appearance](#appearance)
+  - [Extras](#extras)
+- [Credits](#credits)
 
 ## Getting Started
 
