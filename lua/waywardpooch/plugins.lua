@@ -1,4 +1,6 @@
-local ensure_packer = function()
+-- Checks if packer is installed, and if not, installs it.
+-- Returns the status of whether packer needed to be bootstrapped.
+local function initialize_packer()
 	local fn = vim.fn
 	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 	if fn.empty(fn.glob(install_path)) > 0 then
@@ -9,7 +11,9 @@ local ensure_packer = function()
 	return false
 end
 
-local packer_bootstrap = ensure_packer()
+-- Whether a PackerSync operation should be run.
+-- Determined by whether or not Packer was just bootstrapped.
+local is_sync_needed = initialize_packer()
 
 -- plugin setup
 require("packer").startup(function(use)
@@ -63,13 +67,13 @@ require("packer").startup(function(use)
 	-- show git diffs in gutter
 	use("lewis6991/gitsigns.nvim")
 
-	-- allow git commands from vim
-	use("tpope/vim-fugitive")
-
 	-- allow easy commenting/uncommenting
 	use("tpope/vim-commentary")
 
-	if packer_bootstrap then
+	-- easy git access
+	use("kdheepak/lazygit.nvim")
+
+	if is_sync_needed then
 		require("packer").sync()
 	end
 end)

@@ -6,20 +6,20 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
 
+-- autocommand group for code formatting-relating commands
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-local lsp_formatting = function(bufnr)
+-- Handler for deciding which LSP to use for formatting code
+local function lsp_formatting(bufnr)
 	vim.lsp.buf.format({
 		filter = function(client)
-			-- apply whatever logic you want (in this example, we'll only use null-ls)
 			return client.name == "null-ls"
 		end,
 		bufnr = bufnr,
 	})
 end
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
+-- Function which runs after a language server starts
 local on_attach = function(client, bufnr)
 	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -62,11 +62,6 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 local lspconfig = require("lspconfig")
 
-local lsp_flags = {
-	-- This is the default in Nvim 0.7+
-	debounce_text_changes = 150,
-}
-
 local null_ls = require("null-ls")
 
 null_ls.setup({
@@ -74,9 +69,11 @@ null_ls.setup({
 	sources = {
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.prettierd,
+		null_ls.builtins.formatting.elm_format,
 	},
 })
 
+-- list of customized settings to apply to LSPs
 local master_lsp_settings = {
 	["sumneko_lua"] = {
 		Lua = {
@@ -100,15 +97,26 @@ local master_lsp_settings = {
 	},
 }
 
-local servers = { "tsserver", "sumneko_lua" }
-for _, lsp in ipairs(servers) do
-	lspconfig[lsp].setup({
-		capabilities = capabilities,
-		on_attach = on_attach,
-		flags = lsp_flags,
-		settings = master_lsp_settings[lsp],
-	})
+-- Runs the setup method for a list of language servers.
+-- Uses provided server names and options during setup of each.
+local function setup_language_servers(server_names, server_capabilities, on_lsp_attach, server_settings)
+	for _, lsp in ipairs(server_names) do
+		lspconfig[lsp].setup({
+			capabilities = server_capabilities,
+			on_attach = on_lsp_attach,
+			flags = {
+				debounce_text_changes = 150,
+			},
+			settings = server_settings[lsp],
+		})
+	end
 end
+
+setup_language_servers({
+	"tsserver",
+	"sumneko_lua",
+	"elmls",
+}, capabilities, on_attach, master_lsp_settings)
 
 -- luasnip setup
 local luasnip = require("luasnip")

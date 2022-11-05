@@ -1,5 +1,4 @@
 local set = vim.opt
-local let = vim.g
 
 set.background = "dark"
 set.backup = false
@@ -24,5 +23,4 @@ set.colorcolumn = "80"
 set.shortmess:append("c")
 set.errorbells = false
 
-let.mapleader = " "
-let.netrw_localmovecmd = "mv"
+vim.g.netrw_localmovecmd = "mv"

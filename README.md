@@ -2,11 +2,11 @@
 
 This is my personal neovim configuration as a web developer.
 
-This configuration is primarily lua-based and uses Packer to manage plugins. Has support for TypeScript/React and Lua.
+This configuration is primarily lua-based and uses Packer to manage plugins. Has support for TypeScript/React, Elm, and Lua.
 
 ### Disclaimer
 
-I am sharing this configuration as-is and offer no support if something goes wrong. 
+I am sharing this configuration as-is and offer no support if something goes wrong.
 
 If you want an all-in-one configuration for Neovim, [LunarVim](https://www.lunarvim.org/) and [Astrovim](https://github.com/AstroNvim/AstroNvim) are great choices.
 
@@ -25,9 +25,16 @@ All plugins I am using have been linked above so you may easily check them out y
 
 ## Getting Started
 
-All of the following commands assume you are on a Linux machine and already have a copy of **Neovim 0.8+**. I recommend using [Bob](https://github.com/MordechaiHadad/bob) to manage Neovim versions on your system.
+### Prerequisites
 
-First, back up your current neovim configuration:
+- A GNU/Linux distribution (paths for commands/functions assume a GNU/Linux directory scheme)
+- Neovim 0.8+ (I recommend using [Bob](https://github.com/MordechaiHadad/bob) to manage Neovim versions on your system.)
+- [lazygit](https://github.com/jesseduffield/lazygit#installation) (friendly GUI for git; required by its integration plugin)
+- (optional) [ripgrep](https://github.com/BurntSushi/ripgrep#installation) (for highly enhanced file search with telescope)
+
+### Installation
+
+First, back up your current neovim configuration (if you have one; otherwise, skip this step):
 
 ```bash
 cp -r ~/.config/nvim ~/.config/nvim-backup
@@ -68,7 +75,7 @@ nvim +PackerSync
 
 - [telescope](https://github.com/nvim-telescope/telescope.nvim) (Amazing lua-based fuzzy finder)
 - [gitsigns](https://github.com/lewis6991/gitsigns.nvim) (Show git diff indicators in the side gutter)
-- [vim-fugitive](https://github.com/tpope/vim-fugitive) (Run git commands directly from Vim)
+- [lazygit.nvim](https://github.com/kdheepak/lazygit.nvim) (Integration for lazygit, a friendly interface for Git)
 
 ### Appearance
 
